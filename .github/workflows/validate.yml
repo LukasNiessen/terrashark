@@ -1,0 +1,94 @@
+name: Validate Terrashark
+
+on:
+  pull_request:
+  push:
+    branches: [main, master]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Validate required files
+        run: |
+          test -f SKILL.md
+          test -f README.md
+          test -d references
+          test -f .claude-plugin/marketplace.json
+
+      - name: Validate SKILL frontmatter fields
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('SKILL.md')
+          text = p.read_text(encoding='utf-8')
+          assert text.startswith('---\n'), 'SKILL.md must start with YAML frontmatter'
+          end = text.find('\n---\n', 4)
+          assert end != -1, 'SKILL.md frontmatter must close with ---'
+          fm = text[4:end]
+          assert 'name:' in fm, 'frontmatter missing name'
+          assert 'description:' in fm, 'frontmatter missing description'
+          print('frontmatter OK')
+          PY
+
+      - name: Validate local markdown links
+        run: |
+          python - <<'PY'
+          import re
+          from pathlib import Path
+
+          md_files = list(Path('.').rglob('*.md'))
+          bad = []
+          link_re = re.compile(r'\[[^\]]+\]\(([^)]+)\)')
+
+          for f in md_files:
+            txt = f.read_text(encoding='utf-8', errors='ignore')
+            for m in link_re.finditer(txt):
+              link = m.group(1).strip()
+              if link.startswith('http://') or link.startswith('https://') or link.startswith('#'):
+                continue
+              if link.startswith('mailto:'):
+                continue
+              target = (f.parent / link.split('#',1)[0]).resolve()
+              if not target.exists():
+                bad.append((str(f), link))
+
+          if bad:
+            for file, link in bad:
+              print(f'Broken link in {file}: {link}')
+            raise SystemExit(1)
+
+          print('markdown links OK')
+          PY
+
+      - name: Check failure-mode references are present
+        run: |
+          test -f references/identity-churn.md
+          test -f references/secret-exposure.md
+          test -f references/blast-radius.md
+          test -f references/ci-drift.md
+          test -f references/compliance-gates.md
+
+      - name: Basic markdown style checks
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          issues = []
+          for f in Path('.').rglob('*.md'):
+            lines = f.read_text(encoding='utf-8', errors='ignore').splitlines()
+            for i, line in enumerate(lines, start=1):
+              if line.endswith('  '):
+                issues.append(f'{f}:{i}: trailing double-space')
+          if issues:
+            print('\n'.join(issues))
+            raise SystemExit(1)
+          print('basic markdown style OK')
+          PY

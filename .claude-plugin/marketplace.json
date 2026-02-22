@@ -1,0 +1,6 @@
+{
+  "name": "terrashark",
+  "display_name": "Terraform/OpenTofu Guardrails",
+  "description": "Practical Terraform and OpenTofu skill focused on structure, security, testing, and low-hallucination IaC generation.",
+  "version": "2.3.0"
+}
