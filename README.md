@@ -31,13 +31,15 @@ Based on [HashiCorp's official recommended practices](https://developer.hashicor
 git clone https://github.com/LukasNiessen/terrashark.git ~/.claude/skills/terrashark
 ```
 
-**Windows (PowerShell):**
+**Windows:**
 
 ```powershell
-git clone https://github.com/LukasNiessen/terrashark.git "$env:USERPROFILE\.claude\skills\terrashark"
+git clone https://github.com/LukasNiessen/terrashark.git "cd %USERPROFILE%\.claude\skills\terrashark"
 ```
 
 That's it. Claude Code auto-discovers skills in `~/.claude/skills/` — no restart needed.
+
+---
 
 ### Option 2: Marketplace
 
@@ -49,6 +51,8 @@ Claude Code has a built-in plugin system with marketplace support. Instead of cl
 ```
 
 Or use the interactive plugin manager — run `/plugin`, switch to the **Discover** tab, and install from there. The marketplace reads the `.claude-plugin/marketplace.json` in this repo to register TerraShark as an installable plugin.
+
+---
 
 ### Option 3: Codex
 
