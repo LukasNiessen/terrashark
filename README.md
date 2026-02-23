@@ -280,4 +280,6 @@ This project is under the **MIT** license.
 
 ---
 
-Version: **v2.3.0**
+## Version
+
+**v2.3.0**
