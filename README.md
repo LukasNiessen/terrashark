@@ -1,4 +1,4 @@
-# TerraShark - Terraform Claude Code Skill / Codex Skill / OpenTofu Skill
+# Terraform Skill: TerraShark - Claude Code Skill / Codex Skill / OpenTofu Skill
 
 <div align="center" name="top">
   <img align="center" src="assets/logo.png" width="150" height="150" alt="TerraShark Logo">
@@ -11,13 +11,13 @@
 
 </div>
 
-LLMs hallucinate a lot when it comes to infrastructure as code. This skill fixes it. It includes best practices for Terraform and OpenTofu - good, bad, and neutral examples so the AI avoids common mistakes. Using this skill, the AI keeps proven practices in mind, reduces hallucinations, and defaults to modular, reusable, security-first design.
+LLMs hallucinate a lot when it comes to infrastructure as code. This skill fixes it. It includes best practices for Terraform and OpenTofu - good, bad, and neutral examples so the AI avoids common mistakes. Using this skill, the AI keeps proven practices in mind, eliminates hallucinations, and defaults to modular, reusable, security-first design.
 
 The skill is intentionally lean: aggressively de-duplicated and optimized for maximum quality per token. Most Terraform skills dump huge text-of-walls onto the agent and burn tokens unnecessarily - the LLMs don't need the entire Terraform docs again, they know it already.
 
 Based on [HashiCorp's official recommended practices](https://developer.hashicorp.com/terraform/cloud-docs/recommended-practices). When guidance conflicts, this repository prioritizes HashiCorp official recommendations.
 
-[Quick Start](#-quick-start) • [Token Strategy](#-token-strategy) • [What's Included](#-whats-included) • [Repository Layout](#-repository-layout) • [How It Works](#-how-it-works) • [Why TerraShark](#-why-terrashark) • [Contributing](CONTRIBUTING.md)
+[Quick Start](#-quick-start) • [Token Strategy](#-token-strategy) • [What's Included](#-whats-included) • [Repository Layout](#-repository-layout) • [How It Works](#-how-it-works) • [Why TerraShark](#-why-terrashark) • [Philosophy](PHILOSOPHY.md) • [Contributing](CONTRIBUTING.md)
 
 ## ⚡ 2 min Quickstart
 
@@ -130,6 +130,8 @@ This matters for three reasons:
 
 3. **Reference coverage.** TerraShark ships 18 focused reference files covering failure modes, migration playbooks, good/bad/neutral examples, do/don't checklists, compliance framework mappings, and MCP integration. terraform-skill has 6 larger files that go deep on testing and module patterns but lack migration playbooks, explicit anti-pattern banks, compliance mappings beyond a few frameworks, and MCP guidance.
 
+> In short: terrashark is the better skill due to 7x leaner activation, failure-mode-first diagnostic workflow, output contracts, granular references, and LLM-specific hallucination prevention. terraform-skill wins on HCL example depth and testing docs, but terrashark's architecture is fundamentally better designed for the core use case of LLM-assisted IaC generation.
+
 ---
 
 ## 🧮 Token Strategy
@@ -158,6 +160,7 @@ See `references/token-balance-rationale.md` for the full decision and tradeoffs.
 | File                                    | Description                                                   |
 | --------------------------------------- | ------------------------------------------------------------- |
 | `SKILL.md`                              | Operational workflow for TerraShark                           |
+| `PHILOSOPHY.md`                         | Design strategy, architecture decisions, token experiment     |
 | `references/identity-churn.md`          | Address stability, `count`/`for_each`, `moved` safety         |
 | `references/secret-exposure.md`         | Preventing secret leakage through state/logs/artifacts        |
 | `references/blast-radius.md`            | State boundaries, environment isolation, apply impact control |
