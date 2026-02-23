@@ -19,7 +19,7 @@ The skill is intentionally lean: aggressively de-duplicated and optimized for ma
 
 Based on [HashiCorp's official recommended practices](https://developer.hashicorp.com/terraform/cloud-docs/recommended-practices). When guidance conflicts, this repository prioritizes HashiCorp official recommendations.
 
-[Quick Start](#-quick-start) • [Token Strategy](#-token-strategy) • [What's Included](#-whats-included) • [Repository Layout](#-repository-layout) • [How It Works](#-how-it-works) • [Why TerraShark](#-why-terrashark) • [Philosophy](PHILOSOPHY.md) • [Contributing](CONTRIBUTING.md)
+[Quick Start](#-quick-start) • [Why TerraShark](#-why-terrashark) • [Token Strategy](#-token-strategy) • [What's Included](#-whats-included) • [How It Works](#-how-it-works) • [Philosophy](PHILOSOPHY.md)
 
 ## ⚡ 2 min Quickstart
 
