@@ -169,6 +169,8 @@ See `references/token-balance-rationale.md` for the full decision and tradeoffs.
 
 ## 🔲 Repository Layout
 
+Here an overview of the repository layout.
+
 | File                                    | Description                                                   |
 | --------------------------------------- | ------------------------------------------------------------- |
 | `SKILL.md`                              | Operational workflow for TerraShark                           |
@@ -278,4 +280,4 @@ This project is under the **MIT** license.
 
 ---
 
-**v2.3.0**
+Version: **v2.3.0**
