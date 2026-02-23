@@ -142,7 +142,7 @@ This matters for three reasons:
 
 3. **Reference coverage.** TerraShark ships 18 focused reference files covering failure modes, migration playbooks, good/bad/neutral examples, do/don't checklists, compliance framework mappings, and MCP integration. terraform-skill has 6 larger files that go deep on testing and module patterns but lack migration playbooks, explicit anti-pattern banks, compliance mappings beyond a few frameworks, and MCP guidance.
 
-> In short: terrashark is the better skill due to 7x leaner activation, failure-mode-first diagnostic workflow, output contracts, granular references, and LLM-specific hallucination prevention. terraform-skill wins on HCL example depth and testing docs, but terrashark's architecture is fundamentally better designed for the core use case of LLM-assisted IaC generation.
+**In short:** TerraShark is the better skill due to 7x leaner activation, failure-mode-first diagnostic workflow, output contracts, granular references, and LLM-specific hallucination prevention. terraform-skill wins on HCL example depth and testing docs, but TerraShark's architecture is fundamentally better designed for the core use case of LLM-assisted IaC generation.
 
 ---
 
@@ -232,7 +232,7 @@ No. The skill is designed for low token overhead. Only relevant references shoul
 
 **Q: Can I use this outside Claude Code?**
 
-Yes. The references are plain Markdown and can be used from any workflow or AI assistant. The trigger behavior in `SKILL.md` is optimized for skill-enabled environments.
+Yes. The references are plain Markdown and can be used from any workflow or AI assistant, **including Codex**. The trigger behavior in `SKILL.md` is optimized for skill-enabled environments.
 
 **Q: How was the content validated?**
 
