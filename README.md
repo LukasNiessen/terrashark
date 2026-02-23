@@ -33,7 +33,7 @@ TerraShark is primarily based on [HashiCorp official recommended practices](http
 
 ## ⚡ 2 min Quickstart
 
-### Option 1: Clone (recommended)
+### Option 1: Clone
 
 **macOS / Linux:**
 
@@ -49,8 +49,6 @@ git clone https://github.com/LukasNiessen/terrashark.git "cd %USERPROFILE%\.clau
 
 That's it. Claude Code auto-discovers skills in `~/.claude/skills/` — no restart needed.
 
----
-
 ### Option 2: Marketplace
 
 Claude Code has a built-in plugin system with marketplace support. Instead of cloning manually, you can add TerraShark's marketplace and install directly from the CLI:
@@ -61,8 +59,6 @@ Claude Code has a built-in plugin system with marketplace support. Instead of cl
 ```
 
 Or use the interactive plugin manager — run `/plugin`, switch to the **Discover** tab, and install from there. The marketplace reads the `.claude-plugin/marketplace.json` in this repo to register TerraShark as an installable plugin.
-
----
 
 ### Option 3: Codex
 
