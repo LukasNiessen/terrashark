@@ -13,11 +13,14 @@
 
 </div>
 
-LLMs hallucinate a lot when it comes to infrastructure as code. This skill fixes it. It includes best practices for Terraform and OpenTofu - good, bad, and neutral examples so the AI avoids common mistakes. Using this skill, the AI keeps proven practices in mind, eliminates hallucinations, and defaults to modular, reusable, security-first design.
+**LLMs hallucinate a lot when it comes to Terraform**:
+This skill fixes it. It includes best practices for Terraform and OpenTofu - good, bad, and neutral examples so the AI avoids common mistakes. Using this skill, the AI keeps proven practices in mind, eliminates hallucinations, and defaults to modular, reusable, security-first design.
 
-**TerraShark is lean**: Most Terraform skills dump huge text-of-walls onto the agent and burn expensive tokens - with no upside. The LLMs don't need the entire Terraform docs again. TerraShark was aggressively de-duplicated and optimized for maximum quality per token.
+**TerraShark is lean**:
+Most Terraform skills dump huge text-of-walls onto the agent and burn expensive tokens - with no upside. The LLMs don't need the entire Terraform docs again. TerraShark was aggressively de-duplicated and optimized for maximum quality per token.
 
-Based on [HashiCorp's official recommended practices](https://developer.hashicorp.com/terraform/cloud-docs/recommended-practices). When guidance conflicts, this repository prioritizes HashiCorp official recommendations.
+**Based on [HashiCorp's official recommended practices](https://developer.hashicorp.com/terraform/cloud-docs/recommended-practices)**:
+When guidance conflicts, this repository prioritizes HashiCorp official recommendations.
 
 [Quick Start](#-quick-start) • [Why TerraShark](#-why-terrashark) • [Token Strategy](#-token-strategy) • [What's Included](#-whats-included) • [How It Works](#-how-it-works) • [Philosophy](PHILOSOPHY.md)
 
