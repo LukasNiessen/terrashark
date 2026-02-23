@@ -1,4 +1,4 @@
-# Terraform Skill: TerraShark (Claude Code Skill, Codex Skill)
+# Terraform Skill for Claude Code and Codex: TerraShark
 
 <div align="center" name="top">
   <img align="center" src="assets/logo.png" width="180" height="180" alt="TerraShark Logo">
