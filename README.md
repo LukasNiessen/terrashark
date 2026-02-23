@@ -1,4 +1,4 @@
-# Terraform Skill: TerraShark - Claude Code Skill / Codex Skill / OpenTofu Skill
+# Terraform Skill: TerraShark (Claude Code Skill, Codex Skill)
 
 <div align="center" name="top">
   <img align="center" src="assets/logo.png" width="150" height="150" alt="TerraShark Logo">
@@ -7,7 +7,7 @@
 <p></p>
 
 [![Claude Skill](https://img.shields.io/badge/Claude-Skill-6272F5)](https://docs.claude.ai/docs/agent-skills)
-[![Codex Compatible](https://img.shields.io/badge/Codex-Compatible-10A37F)](https://openai.com/index/introducing-codex/)
+[![Codex Skill](https://img.shields.io/badge/Codex-Skill-10A37F)](https://developers.openai.com/codex/skills/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![GitHub stars](https://img.shields.io/github/stars/LukasNiessen/terrashark.svg)](https://github.com/LukasNiessen/terrashark)
 
