@@ -6,6 +6,8 @@
 <!-- spacer -->
 <p></p>
 
+[![Claude Skill](https://img.shields.io/badge/Claude-Skill-6272F5)](https://docs.claude.ai/docs/agent-skills)
+[![Codex Compatible](https://img.shields.io/badge/Codex-Compatible-10A37F)](https://openai.com/index/introducing-codex/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![GitHub stars](https://img.shields.io/github/stars/LukasNiessen/terrashark.svg)](https://github.com/LukasNiessen/terrashark)
 
