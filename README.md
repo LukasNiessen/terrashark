@@ -146,7 +146,7 @@ This matters for three reasons:
 
 ---
 
-## 🧮 Token Strategy
+## 🕵️ Token Strategy
 
 - Keep `SKILL.md` procedural and compact
 - Keep references focused on failure-prone decisions
@@ -155,7 +155,7 @@ This matters for three reasons:
 
 See `references/token-balance-rationale.md` for the full decision and tradeoffs.
 
-## 🗂 What's Included
+## 🐣 What's Included
 
 - A focused `SKILL.md` execution flow
 - Failure-mode-first guidance to prevent common IaC hallucinations
@@ -167,7 +167,7 @@ See `references/token-balance-rationale.md` for the full decision and tradeoffs.
 - Rewritten good/bad/neutral example bank
 - Do/Don't pattern bank and MCP integration guidance
 
-## 🗺 Repository Layout
+## 🔲 Repository Layout
 
 | File                                    | Description                                                   |
 | --------------------------------------- | ------------------------------------------------------------- |
@@ -196,7 +196,7 @@ See `references/token-balance-rationale.md` for the full decision and tradeoffs.
 | `.github/PULL_REQUEST_TEMPLATE.md`      | PR quality and failure-mode checklist                         |
 | `.claude-plugin/marketplace.json`       | Plugin metadata                                               |
 
-## ⚙ How It Works
+## 🔎 How It Works
 
 The skill runs as a failure-mode workflow whenever Claude Code handles Terraform or OpenTofu tasks:
 
@@ -208,19 +208,14 @@ The skill runs as a failure-mode workflow whenever Claude Code handles Terraform
 6. **Validate before finalize** - Runtime-appropriate command sequence and risk-tier checks
 7. **Deliver complete output** - Assumptions, remediation choices, tradeoffs, validation plan, recovery notes
 
-## 🎯 Scope
+## 🐲 Scope
 
 - Terraform and OpenTofu module design/review/refactoring
 - Safe migration workflows for existing stacks
 - CI/CD and policy integration for infrastructure delivery
 - Blast-radius reduction and operational safety
 
-## 🚫 Non-Goals
-
-- Cloud-service deep architecture blueprints for every provider feature
-- Turnkey enterprise policy pack for all organizations
-
-## 🔖 FAQ
+## ℹ️ FAQ
 
 **Q: Does this work with OpenTofu?**
 
@@ -238,15 +233,11 @@ Yes. The references are plain Markdown and can be used from any workflow or AI a
 
 We started with much larger references and a large automated test suite, then repeatedly removed sections and re-tested. If quality dropped, content was restored. If quality stayed stable, content remained out.
 
-## 🏷 Version
-
-v2.3.0
-
-## 🤝 Contributing
+## 🦊 Contributing
 
 We highly appreciate contributions. See [CONTRIBUTING.md](CONTRIBUTING.md) and use the PR template for failure-mode and validation details.
 
-## 🌐 Community
+## 💟 Community
 
 ### Maintainers
 
@@ -275,7 +266,7 @@ If TerraShark helps your project, please consider:
 
 [![Star History Chart](https://api.star-history.com/svg?repos=LukasNiessen/terrashark&type=Date)](https://www.star-history.com/#LukasNiessen/terrashark&Date)
 
-## 📜 License
+## 📄 License
 
 This project is under the **MIT** license.
 
@@ -284,3 +275,7 @@ This project is under the **MIT** license.
 <p align="center">
   <a href="#top"><strong>Go Back to Top</strong></a>
 </p>
+
+---
+
+**v2.3.0**
