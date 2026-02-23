@@ -41,7 +41,13 @@ TerraShark is primarily based on [HashiCorp official recommended practices](http
 git clone https://github.com/LukasNiessen/terrashark.git ~/.claude/skills/terrashark
 ```
 
-**Windows:**
+**Windows (Powershell):**
+
+```powershell
+git clone https://github.com/LukasNiessen/terrashark.git "$env:USERPROFILE\.claude\skills\terrashark"
+```
+
+**Windows (Command Prompt):**
 
 ```powershell
 git clone https://github.com/LukasNiessen/terrashark.git "%USERPROFILE%\.claude\skills\terrashark"
