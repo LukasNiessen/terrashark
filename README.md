@@ -104,7 +104,7 @@ Migrate this module from count to for_each
 
 ## 🎬 Demo
 
-https://github.com/user-attachments/assets/8802e614-a150-44e3-88b3-d61bf9409241
+https://github.com/user-attachments/assets/2bc4c9ff-9f54-4a49-8bf0-5cfc0f26dec6
 
 ## 🏁 Why TerraShark
 
