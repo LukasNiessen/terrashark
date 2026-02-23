@@ -1,7 +1,7 @@
 # Terraform Skill: TerraShark (Claude Code Skill, Codex Skill)
 
 <div align="center" name="top">
-  <img align="center" src="assets/logo.png" width="150" height="150" alt="TerraShark Logo">
+  <img align="center" src="assets/logo.png" width="180" height="180" alt="TerraShark Logo">
 
 <!-- spacer -->
 <p></p>
@@ -13,21 +13,23 @@
 
 </div>
 
-### 🧐 Fixes Hallucinations
+### Fixes Hallucinations.
 
 LLMs Hallucinate a lot when it comes to Terraform. This skill fixes it. It includes best practices for Terraform and OpenTofu - good, bad, and neutral examples so the AI avoids common mistakes. Using this skill, the AI keeps proven practices in mind, eliminates hallucinations, and defaults to modular, reusable, security-first design.
 
-### 🔍 Very Token-Efficient
+### Very Token-Efficient.
 
 Most Terraform skills dump huge text-of-walls onto the agent and burn expensive tokens - with no upside. The LLMs don't need the entire Terraform docs again. TerraShark was aggressively de-duplicated and optimized for maximum quality per token.
 
-### 📘 Based on HashiCorp's Official Best Practices
+### Based on HashiCorp's Official Best Practices.
 
 TerraShark is primarily based on [HashiCorp official recommended practices](https://developer.hashicorp.com/terraform/cloud-docs/recommended-practices). When guidance conflicts, it prioritizes HashiCorp's recommendations.
 
 ---
 
 [Quick Start](#-quick-start) • [Why TerraShark](#-why-terrashark) • [Token Strategy](#-token-strategy) • [What's Included](#-whats-included) • [How It Works](#-how-it-works) • [Philosophy](PHILOSOPHY.md)
+
+---
 
 ## ⚡ 2 min Quickstart
 
