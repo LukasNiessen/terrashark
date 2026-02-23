@@ -44,7 +44,7 @@ git clone https://github.com/LukasNiessen/terrashark.git ~/.claude/skills/terras
 **Windows:**
 
 ```powershell
-git clone https://github.com/LukasNiessen/terrashark.git "cd %USERPROFILE%\.claude\skills\terrashark"
+git clone https://github.com/LukasNiessen/terrashark.git "%USERPROFILE%\.claude\skills\terrashark"
 ```
 
 That's it. Claude Code auto-discovers skills in `~/.claude/skills/` — no restart needed.
