@@ -290,6 +290,8 @@ This project is under the **MIT** license.
 
 ---
 
-## Version
+## Other
 
-**v2.3.0**
+**Version:** v2.3.0
+
+**GitHub Pages:** [https://lukasniessen.github.io/terrashark/](https://lukasniessen.github.io/terrashark/)
