@@ -266,7 +266,7 @@ Found a bug? Want to discuss features?
 
 If TerraShark helps your project, please consider:
 
-- Starring the repository
+- Starring the repository⭐
 - Suggesting new features
 - Contributing code or documentation
 
