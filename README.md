@@ -251,6 +251,10 @@ We highly appreciate contributions. See [CONTRIBUTING.md](CONTRIBUTING.md) and u
 
 • **[LukasNiessen](https://github.com/LukasNiessen)** - Creator and main maintainer
 
+• **[janMagnusHeimann](https://github.com/janMagnusHeimann)** - Main maintainer
+
+• **[TristanKruse](https://github.com/TristanKruse)** - Main maintainer
+
 ### Contributors
 
 <a href="https://github.com/LukasNiessen/terrashark/graphs/contributors">

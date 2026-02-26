@@ -1,0 +1,23 @@
+{
+  "title": "Terraform Skill for Claude Code — TerraShark Documentation",
+  "description": "Comprehensive documentation for TerraShark, the Terraform and OpenTofu skill for Claude Code and Codex. Prevent hallucinations, enforce best practices, and generate safe infrastructure-as-code.",
+  "author": "Lukas Niessen",
+  "language": "en",
+  "gitbook": ">= 3.2.0",
+  "plugins": [
+    "-sharing",
+    "search-pro",
+    "-lunr",
+    "-search"
+  ],
+  "pluginsConfig": {},
+  "structure": {
+    "readme": "README.md",
+    "summary": "SUMMARY.md"
+  },
+  "links": {
+    "sidebar": {
+      "GitHub Repository": "https://github.com/LukasNiessen/terrashark"
+    }
+  }
+}
