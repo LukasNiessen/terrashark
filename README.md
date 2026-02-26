@@ -294,4 +294,6 @@ This project is under the **MIT** license.
 
 **Version:** v2.3.0
 
+**Website:** https://terraformskill.com/
+
 **GitHub Pages:** [https://lukasniessen.github.io/terrashark/](https://lukasniessen.github.io/terrashark/)
