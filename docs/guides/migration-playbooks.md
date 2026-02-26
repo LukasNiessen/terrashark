@@ -16,7 +16,7 @@ Five dedicated playbooks for safely migrating Terraform resources without causin
 
 ### Example Mapping
 
-```hcl
+```javascript
 moved {
   from = aws_subnet.app[0]
   to   = aws_subnet.app["a"]
@@ -32,7 +32,7 @@ moved {
 
 Use `moved` for address renames before any apply.
 
-```hcl
+```javascript
 moved {
   from = module.edge_cache
   to   = module.cdn_edge
@@ -51,7 +51,7 @@ When taking over manually created resources:
 
 Prefer declarative `import` blocks over CLI `terraform import`:
 
-```hcl
+```javascript
 import {
   to = aws_s3_bucket.logs
   id = "my-existing-bucket-name"
@@ -64,7 +64,7 @@ resource "aws_s3_bucket" "logs" {
 
 ### Bulk Import with `for_each`
 
-```hcl
+```javascript
 locals {
   existing_buckets = {
     logs    = "prod-logs-bucket"

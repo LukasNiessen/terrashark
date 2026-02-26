@@ -50,7 +50,7 @@ Identity churn is one of the most common and dangerous Terraform failure modes. 
 
 ### Example
 
-```hcl
+```javascript
 locals {
   app_subnets = {
     a = { cidr = "10.40.1.0/24", az = "us-east-1a" }
@@ -83,7 +83,7 @@ moved {
 
 When renaming resource/module labels, always add `moved` first:
 
-```hcl
+```javascript
 moved {
   from = module.network_core
   to   = module.network_foundation
@@ -94,7 +94,7 @@ moved {
 
 **Bad** — key depends on apply-time value:
 
-```hcl
+```javascript
 resource "aws_security_group_rule" "egress" {
   for_each                 = toset([aws_security_group.ecs.id])
   type                     = "egress"
@@ -108,7 +108,7 @@ resource "aws_security_group_rule" "egress" {
 
 **Safer fallback** for optional singleton behavior:
 
-```hcl
+```javascript
 resource "aws_security_group_rule" "egress" {
   count                    = var.enable_egress_rule ? 1 : 0
   type                     = "egress"

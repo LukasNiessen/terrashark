@@ -1,0 +1,14 @@
+{
+  "name": "terrashark-docs",
+  "version": "2.3.0",
+  "description": "TerraShark documentation - Terraform Skill for Claude Code",
+  "private": true,
+  "scripts": {
+    "build": "honkit build",
+    "serve": "honkit serve"
+  },
+  "devDependencies": {
+    "honkit": "^5.1.0",
+    "gitbook-plugin-search-pro": "^2.0.2"
+  }
+}

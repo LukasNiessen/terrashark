@@ -13,7 +13,7 @@ This guide covers implementation-level consistency for Terraform and OpenTofu co
 
 Some resources reject characters valid in domains or service names (e.g., `.` in RDS identifiers):
 
-```hcl
+```javascript
 locals {
   raw_name        = "${var.domain}-prod"
   normalized_name = regexreplace(lower(local.raw_name), "[^a-z0-9-]", "-")

@@ -40,7 +40,7 @@ Avoid long-lived static credentials in repository or runner config.
 
 ## Good Example: Secret Manager Integration
 
-```hcl
+```javascript
 variable "db_admin_username" {
   description = "Database admin user"
   type        = string
@@ -61,7 +61,7 @@ resource "aws_db_instance" "core" {
 
 ## Bad Example: Plaintext Default
 
-```hcl
+```javascript
 variable "db_password" {
   type    = string
   default = "ChangeMe123!"  # NEVER do this

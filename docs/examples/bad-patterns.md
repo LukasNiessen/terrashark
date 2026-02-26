@@ -4,7 +4,7 @@ Seven common anti-patterns that the Terraform skill explicitly prevents. Each pa
 
 ## 1. List-Driven `count` for Mutable Identities
 
-```hcl
+```javascript
 variable "queue_names" {
   type = list(string)
 }
@@ -19,7 +19,7 @@ resource "aws_sqs_queue" "worker" {
 
 ## 2. No Type Constraints on Critical Input
 
-```hcl
+```javascript
 variable "network" {
   default = {}
 }
@@ -29,7 +29,7 @@ variable "network" {
 
 ## 3. Sensitive Defaults Committed in Code
 
-```hcl
+```javascript
 variable "api_token" {
   type    = string
   default = "token-please-change"
@@ -40,7 +40,7 @@ variable "api_token" {
 
 ## 4. Floating Provider Versions
 
-```hcl
+```javascript
 terraform {
   required_providers {
     azurerm = {
@@ -54,7 +54,7 @@ terraform {
 
 ## 5. Blanket `ignore_changes`
 
-```hcl
+```javascript
 resource "aws_db_instance" "main" {
   identifier = "core-db"
   engine     = "postgres"
@@ -69,7 +69,7 @@ resource "aws_db_instance" "main" {
 
 ## 6. Dynamic Block with Wrong Iterator Reference
 
-```hcl
+```javascript
 variable "ports" {
   type = list(number)
 }
@@ -93,7 +93,7 @@ resource "aws_security_group" "app" {
 
 ## 7. Hidden Ordering via Unrelated `depends_on`
 
-```hcl
+```javascript
 resource "aws_iam_role" "app" {
   name = "app-role"
 }

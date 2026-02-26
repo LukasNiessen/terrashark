@@ -107,7 +107,7 @@ Use Terratest when native tests are insufficient:
 
 Minimal Makefile targets:
 
-```makefile
+```bash
 test-native:
 	terraform test
 

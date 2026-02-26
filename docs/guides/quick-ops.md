@@ -56,7 +56,7 @@ tofu show -json plan.bin > plan.json
 
 **Fix:** Normalize to lowercase letters, numbers, and hyphens:
 
-```hcl
+```javascript
 locals {
   rds_base = regexreplace(lower("${var.project}-prod"), "[^a-z0-9-]", "-")
 }
@@ -138,7 +138,7 @@ terraform init -migrate-state
 
 Use `terraform_data` (TF 1.4+) instead of `null_resource` + `null` provider:
 
-```hcl
+```javascript
 # Prefer this (no extra provider needed):
 resource "terraform_data" "bootstrap" {
   triggers_replace = [var.config_hash]

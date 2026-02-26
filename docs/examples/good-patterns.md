@@ -4,7 +4,7 @@ Eight strong implementation patterns that the Terraform skill uses as positive e
 
 ## 1. Stable Identity Map for Service Accounts
 
-```hcl
+```javascript
 variable "service_accounts" {
   type = map(object({
     display_name = string
@@ -23,7 +23,7 @@ resource "google_service_account" "app" {
 
 ## 2. Cross-Variable Validation for Safe Combinations
 
-```hcl
+```javascript
 variable "public_endpoint" {
   type    = bool
   default = false
@@ -44,7 +44,7 @@ variable "allowed_cidrs" {
 
 ## 3. Strong Object Typing with Optional Fields
 
-```hcl
+```javascript
 variable "node_pool" {
   type = object({
     size           = string
@@ -59,7 +59,7 @@ variable "node_pool" {
 
 ## 4. Narrow, Useful Outputs
 
-```hcl
+```javascript
 output "app_subnet_ids" {
   description = "Subnet ids for application workloads"
   value       = values(aws_subnet.app)[*].id
@@ -70,7 +70,7 @@ output "app_subnet_ids" {
 
 ## 5. Controlled Provider Pinning
 
-```hcl
+```javascript
 terraform {
   required_version = ">= 1.6.0"
 
@@ -87,7 +87,7 @@ terraform {
 
 ## 6. Dynamic Block with Typed Variable
 
-```hcl
+```javascript
 variable "ingress_rules" {
   type = list(object({
     port        = number
@@ -116,7 +116,7 @@ resource "aws_security_group" "app" {
 
 ## 7. Provider Alias for Multi-Region
 
-```hcl
+```javascript
 provider "aws" {
   region = "us-east-1"
 }
@@ -143,7 +143,7 @@ module "eu_network" {
 
 ## 8. `moved` Block for Safe Rename
 
-```hcl
+```javascript
 moved {
   from = aws_kms_key.logs
   to   = aws_kms_key.audit

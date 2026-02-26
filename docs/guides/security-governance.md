@@ -44,7 +44,7 @@ Require elevated approval for:
 
 ## Minimal OPA Example
 
-```rego
+```javascript
 package main
 
 deny[msg] {
