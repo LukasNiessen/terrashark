@@ -1,0 +1,13 @@
+{
+  "name": "terrashark",
+  "version": "2.4.0-alpha.0+modern-plugin-layout",
+  "description": "Terraform/OpenTofu Guardrails — failure-mode workflow for low-hallucination IaC generation.",
+  "author": {
+    "name": "Lukas Niessen",
+    "email": "lks.niessen@gmail.com",
+    "url": "https://lukasniessen.com"
+  },
+  "homepage": "https://github.com/LukasNiessen/terrashark",
+  "repository": "https://github.com/LukasNiessen/terrashark",
+  "license": "MIT"
+}
