@@ -35,27 +35,29 @@ TerraShark is primarily based on [HashiCorp official recommended practices](http
 
 ## ⚡ 2 min Quickstart
 
-### Option 1: Clone
+### Option 1: Clone (skill-only, no plugin wrapper)
+
+Use this when you want the skill files directly under `~/.claude/skills/terrashark/` (the auto-discovered skill location) without going through the plugin manager. The skill content now lives at `skills/terrashark/` inside this repo, so the install copies that subtree:
 
 **macOS / Linux:**
 
 ```bash
-git clone https://github.com/LukasNiessen/terrashark.git ~/.claude/skills/terrashark
+git clone --depth=1 https://github.com/LukasNiessen/terrashark.git /tmp/terrashark-src
+mkdir -p ~/.claude/skills/terrashark
+cp -R /tmp/terrashark-src/skills/terrashark/. ~/.claude/skills/terrashark/
+rm -rf /tmp/terrashark-src
 ```
 
 **Windows (Powershell):**
 
 ```powershell
-git clone https://github.com/LukasNiessen/terrashark.git "$env:USERPROFILE\.claude\skills\terrashark"
+git clone --depth=1 https://github.com/LukasNiessen/terrashark.git "$env:TEMP\terrashark-src"
+New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\.claude\skills\terrashark" | Out-Null
+Copy-Item -Recurse -Force "$env:TEMP\terrashark-src\skills\terrashark\*" "$env:USERPROFILE\.claude\skills\terrashark\"
+Remove-Item -Recurse -Force "$env:TEMP\terrashark-src"
 ```
 
-**Windows (Command Prompt):**
-
-```powershell
-git clone https://github.com/LukasNiessen/terrashark.git "%USERPROFILE%\.claude\skills\terrashark"
-```
-
-That's it. Claude Code auto-discovers skills in `~/.claude/skills/` - no restart needed.
+Claude Code auto-discovers skills in `~/.claude/skills/` - no restart needed.
 
 ### Option 2: Marketplace
 
@@ -67,6 +69,8 @@ Claude Code has a built-in plugin system with marketplace support. Instead of cl
 ```
 
 Or use the interactive plugin manager - run `/plugin`, switch to the **Discover** tab, and install from there. The marketplace reads the `.claude-plugin/marketplace.json` in this repo to register TerraShark as an installable plugin.
+
+After install, the skill is registered as `terrashark:terrashark` (namespaced per the Claude Code plugin spec). It auto-activates on Terraform/OpenTofu work; no slash-command is required.
 
 ### Option 3: Codex
 
@@ -82,8 +86,8 @@ Then add to your `AGENTS.md` (or create one in the repo root):
 ```markdown
 ## Terraform
 
-When working with Terraform or OpenTofu, follow the workflow in `.terrashark/SKILL.md`.
-Load references from `.terrashark/references/` as needed.
+When working with Terraform or OpenTofu, follow the workflow in `.terrashark/skills/terrashark/SKILL.md`.
+Load references from `.terrashark/skills/terrashark/references/` as needed.
 ```
 
 ### That's it!
@@ -341,7 +345,7 @@ This project is under the **MIT** license.
 
 ## Other
 
-**Version:** v2.3.0
+**Version:** v2.4.0-alpha.0+modern-plugin-layout
 
 **Website:** https://terraformskill.com/
 
