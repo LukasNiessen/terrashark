@@ -1,6 +1,6 @@
-# Terraform Skill for Claude Code and Codex: TerraShark
+# Terraform Skill for Claude Code, Codex, Antigravity, and Gemini CLI: TerraShark
 
-TerraShark is a lean, failure-mode-first Terraform skill for [Claude Code](https://docs.claude.ai/docs/agent-skills) and [Codex](https://developers.openai.com/codex/skills/). It prevents Terraform and OpenTofu hallucinations by forcing the AI to **diagnose risks before generating code**.
+TerraShark is a lean, failure-mode-first Terraform skill for [Claude Code](https://docs.claude.ai/docs/agent-skills), [Codex](https://developers.openai.com/codex/skills/), [Antigravity](https://antigravity.google/docs/skills), and [Gemini CLI](https://geminicli.com/docs/cli/skills). It prevents Terraform and OpenTofu hallucinations by forcing the AI to **diagnose risks before generating code**.
 
 ## Why Use a Terraform Skill?
 
@@ -20,7 +20,7 @@ LLMs hallucinate frequently when generating Terraform code. They produce configu
 
 ## How It Works
 
-When Claude Code encounters a Terraform or OpenTofu task, the Terraform skill activates and runs a 7-step workflow:
+When Claude Code, Codex, Antigravity, or Gemini CLI encounters a Terraform or OpenTofu task, the Terraform skill activates and runs a 7-step workflow:
 
 1. **Capture execution context** — runtime, version, providers, backend, risk level
 2. **Diagnose failure modes** — identity churn, secret exposure, blast radius, CI drift, compliance gaps
@@ -32,15 +32,22 @@ When Claude Code encounters a Terraform or OpenTofu task, the Terraform skill ac
 
 ## Quick Install
 
+### Claude Code
 ```bash
-# macOS / Linux
 git clone https://github.com/LukasNiessen/terrashark.git ~/.claude/skills/terrashark
-
-# Windows (PowerShell)
-git clone https://github.com/LukasNiessen/terrashark.git "$env:USERPROFILE\.claude\skills\terrashark"
 ```
 
-That's it. Claude Code auto-discovers skills in `~/.claude/skills/` — no restart needed.
+### Antigravity
+```bash
+git clone https://github.com/LukasNiessen/terrashark.git ~/.gemini/antigravity/skills/terrashark
+```
+
+### Gemini CLI
+```bash
+git clone https://github.com/LukasNiessen/terrashark.git ~/.gemini/skills/terrashark
+```
+
+That's it. Assistants auto-discover skills in their respective skills directory — no restart needed.
 
 ## Supported Runtimes
 

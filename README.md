@@ -1,4 +1,4 @@
-# Terraform Skill for Claude Code and Codex: TerraShark
+# Terraform Skill for Claude Code, Codex, Antigravity, and Gemini CLI: TerraShark
 
 <div align="center" name="top">
   <img align="center" src="assets/logo.png" width="180" height="180" alt="TerraShark Logo">
@@ -8,6 +8,8 @@
 
 [![Claude Skill](https://img.shields.io/badge/Claude-Skill-6272F5)](https://docs.claude.ai/docs/agent-skills)
 [![Codex Skill](https://img.shields.io/badge/Codex-Skill-10A37F)](https://developers.openai.com/codex/skills/)
+[![Gemini Skill](https://img.shields.io/badge/Gemini-Skill-8E75C2)](https://geminicli.com/docs/cli/skills)
+[![Antigravity Skill](https://img.shields.io/badge/Antigravity-Skill-blue)](https://antigravity.google/docs/skills)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![GitHub stars](https://img.shields.io/github/stars/LukasNiessen/terrashark.svg)](https://github.com/LukasNiessen/terrashark)
 
@@ -86,9 +88,43 @@ When working with Terraform or OpenTofu, follow the workflow in `.terrashark/SKI
 Load references from `.terrashark/references/` as needed.
 ```
 
+### Option 4: Antigravity
+
+**macOS / Linux:**
+
+```bash
+git clone https://github.com/LukasNiessen/terrashark.git ~/.gemini/antigravity/skills/terrashark
+```
+
+**Windows (PowerShell):**
+
+```powershell
+git clone https://github.com/LukasNiessen/terrashark.git "$env:USERPROFILE\.gemini\antigravity\skills\terrashark"
+```
+
+Antigravity auto-discovers skills in the skills directory — no restart needed.
+
+### Option 5: Gemini CLI
+
+Gemini CLI discovers skills in several standard locations.
+
+**Global Installation (All Workspaces):**
+
+```bash
+git clone https://github.com/LukasNiessen/terrashark.git ~/.gemini/skills/terrashark
+```
+
+**Local Installation (Current Workspace):**
+
+```bash
+git clone https://github.com/LukasNiessen/terrashark.git .gemini/skills/terrashark
+```
+
+Gemini CLI auto-discovers skills in these directories. Run `/skills list` in the CLI to verify.
+
 ### That's it!
 
-Done. Now ask Claude Code / Codex any Terraform question. TerraShark responses follow the 7-step failure-mode workflow and include an output contract with assumptions, tradeoffs, and rollback notes.
+Done. Now ask Claude Code / Codex / Antigravity / Gemini CLI any Terraform question. TerraShark responses follow the 7-step failure-mode workflow and include an output contract with assumptions, tradeoffs, and rollback notes.
 
 **Invoke explicitly:**
 
@@ -255,7 +291,7 @@ Here an overview of the repository layout.
 
 ## 🔎 How It Works
 
-The skill runs as a failure-mode workflow whenever Claude Code handles Terraform or OpenTofu tasks:
+The skill runs as a failure-mode workflow whenever Claude Code, Codex, Antigravity, or Gemini CLI handles Terraform or OpenTofu tasks:
 
 1. **Capture execution context** - Runtime/version, providers, backend, execution path, risk level
 2. **Diagnose likely failure mode(s)** - Identity churn, secret exposure, blast radius, CI drift, compliance gate gaps
@@ -284,7 +320,7 @@ No. The skill is designed for low token overhead. Only relevant references shoul
 
 **Q: Can I use this outside Claude Code?**
 
-Yes. The references are plain Markdown and can be used from any workflow or AI assistant, **including Codex**. The trigger behavior in `SKILL.md` is optimized for skill-enabled environments.
+Yes. The references are plain Markdown and can be used from any workflow or AI assistant, **including Codex, Antigravity, and Gemini CLI**. The trigger behavior in `SKILL.md` is optimized for skill-enabled environments.
 
 **Q: How was the content validated?**
 

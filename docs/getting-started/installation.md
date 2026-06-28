@@ -1,6 +1,6 @@
 # Installing the Terraform Skill
 
-TerraShark can be installed in three ways depending on your environment: direct clone, marketplace, or per-project for Codex.
+TerraShark can be installed in five ways depending on your environment: direct clone for Claude Code, Antigravity, or Gemini CLI, marketplace, or per-project for Codex.
 
 ## Option 1: Clone to Skills Directory (Recommended)
 
@@ -60,12 +60,65 @@ When working with Terraform or OpenTofu, follow the workflow in `.terrashark/SKI
 Load references from `.terrashark/references/` as needed.
 ```
 
-## Updating the Terraform Skill
+## Option 4: Antigravity (Global Setup)
 
-To update to the latest version, pull the latest changes:
+Cloning into the Antigravity skills directory enables the skill across all your workspaces.
+
+### macOS / Linux
 
 ```bash
+git clone https://github.com/LukasNiessen/terrashark.git ~/.gemini/antigravity/skills/terrashark
+```
+
+### Windows (PowerShell)
+
+```powershell
+git clone https://github.com/LukasNiessen/terrashark.git "$env:USERPROFILE\.gemini\antigravity\skills\terrashark"
+```
+
+Antigravity auto-discovers skills in the skills directory — **no restart needed**.
+
+## Option 5: Gemini CLI (Global or Workspace Setup)
+
+Gemini CLI discovers skills in several standard locations.
+
+### Global Installation (All Workspaces)
+
+Ideal for tools you want available in every project.
+
+```bash
+git clone https://github.com/LukasNiessen/terrashark.git ~/.gemini/skills/terrashark
+```
+
+### Local Installation (Current Workspace)
+
+Ideal for project-specific workflow enforcement. Clone into the root of your project:
+
+```bash
+git clone https://github.com/LukasNiessen/terrashark.git .gemini/skills/terrashark
+```
+
+Gemini CLI auto-discovers skills in these directories. Run `/skills list` in the CLI to verify.
+
+## Updating the Terraform Skill
+
+To update to the latest version, pull the latest changes in the directory you installed it:
+
+**Claude Code:**
+```bash
 cd ~/.claude/skills/terrashark
+git pull origin main
+```
+
+**Antigravity:**
+```bash
+cd ~/.gemini/antigravity/skills/terrashark
+git pull origin main
+```
+
+**Gemini CLI (Global):**
+```bash
+cd ~/.gemini/skills/terrashark
 git pull origin main
 ```
 
@@ -87,6 +140,6 @@ The response should follow the 7-step failure-mode workflow and include an outpu
 
 ## System Requirements
 
-- **Claude Code** or **Codex** with skill support
+- **Claude Code**, **Codex**, **Antigravity**, or **Gemini CLI** with skill support
 - **Git** for cloning the repository
 - No additional dependencies required — the skill is pure Markdown
