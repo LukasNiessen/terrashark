@@ -1,6 +1,6 @@
 # Installing the Terraform Skill
 
-TerraShark can be installed in four ways depending on your environment: skills CLI, marketplace, manual Claude Code skill install, or per-project for Codex.
+TerraShark can be installed through the skills CLI, Claude Code marketplace, manual assistant skill directories, or per-project Codex setup.
 
 ## Option 1: Skills CLI
 
@@ -10,7 +10,7 @@ If you manage skills with the `skills` CLI, install TerraShark directly from Git
 npx skills add https://github.com/lukasniessen/terrashark --skill terrashark
 ```
 
-## Option 2: Marketplace Install
+## Option 2: Claude Code Marketplace
 
 Claude Code has a built-in plugin system with marketplace support. Add TerraShark directly from the CLI:
 
@@ -66,6 +66,50 @@ When working with Terraform or OpenTofu, follow the workflow in `.terrashark/ski
 Load references from `.terrashark/skills/terrashark/references/` as needed.
 ```
 
+## Option 5: Antigravity (Global Setup)
+
+Cloning into the Antigravity skills directory enables the skill across all your workspaces. Copy the packaged skill directory, not the repository root.
+
+### macOS / Linux
+
+```bash
+git clone https://github.com/LukasNiessen/terrashark.git /tmp/terrashark
+mkdir -p ~/.gemini/antigravity/skills/terrashark
+cp -R /tmp/terrashark/skills/terrashark/. ~/.gemini/antigravity/skills/terrashark/
+```
+
+### Windows (PowerShell)
+
+```powershell
+git clone https://github.com/LukasNiessen/terrashark.git "$env:TEMP\terrashark"
+New-Item -ItemType Directory -Force "$env:USERPROFILE\.gemini\antigravity\skills\terrashark"
+Copy-Item -Recurse -Force "$env:TEMP\terrashark\skills\terrashark\*" "$env:USERPROFILE\.gemini\antigravity\skills\terrashark\"
+```
+
+Antigravity auto-discovers skills in the skills directory - no restart needed.
+
+## Option 6: Gemini CLI (Global or Workspace Setup)
+
+Gemini CLI discovers skills in several standard locations. Copy the packaged skill directory into the target location.
+
+### Global Installation (All Workspaces)
+
+```bash
+git clone https://github.com/LukasNiessen/terrashark.git /tmp/terrashark
+mkdir -p ~/.gemini/skills/terrashark
+cp -R /tmp/terrashark/skills/terrashark/. ~/.gemini/skills/terrashark/
+```
+
+### Local Installation (Current Workspace)
+
+```bash
+git clone https://github.com/LukasNiessen/terrashark.git .terrashark
+mkdir -p .gemini/skills/terrashark
+cp -R .terrashark/skills/terrashark/. .gemini/skills/terrashark/
+```
+
+Gemini CLI auto-discovers skills in these directories. Run `/skills list` in the CLI to verify.
+
 ## Updating the Terraform Skill
 
 To update a marketplace install, reinstall TerraShark from Claude Code's plugin manager. To update a manual skill install, refresh the clone and copy the packaged skill directory again.
@@ -74,11 +118,13 @@ To update a marketplace install, reinstall TerraShark from Claude Code's plugin 
 cd /tmp/terrashark
 git pull origin main
 cp -R skills/terrashark/. ~/.claude/skills/terrashark/
+cp -R skills/terrashark/. ~/.gemini/antigravity/skills/terrashark/
+cp -R skills/terrashark/. ~/.gemini/skills/terrashark/
 ```
 
 ## Verifying the Installation
 
-After installing through the marketplace, test it by asking Claude Code any Terraform question:
+After installing through the Claude Code marketplace, test it by asking Claude Code any Terraform question:
 
 ```text
 /terrashark:terrashark Create a multi-region S3 module with replication
@@ -94,6 +140,6 @@ The response should follow the 7-step failure-mode workflow and include an outpu
 
 ## System Requirements
 
-- **Claude Code** or **Codex** with skill support
+- **Claude Code**, **Codex**, **Antigravity**, or **Gemini CLI** with skill support
 - **Git** for cloning the repository
 - No additional dependencies required - the skill is pure Markdown
