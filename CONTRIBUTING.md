@@ -22,17 +22,17 @@ Every change should answer:
 
 ```bash
 # quick sanity checks
-rg -n "FIXME|placeholder-text" README.md SKILL.md references/*.md
+rg -n "FIXME|placeholder-text" README.md skills/terrashark/SKILL.md skills/terrashark/references/*.md
 python - <<'PY'
 from pathlib import Path
-assert Path('SKILL.md').exists()
+assert Path('skills/terrashark/SKILL.md').exists()
 assert Path('README.md').exists()
 for p in [
-  'references/identity-churn.md',
-  'references/secret-exposure.md',
-  'references/blast-radius.md',
-  'references/ci-drift.md',
-  'references/compliance-gates.md',
+  'skills/terrashark/references/identity-churn.md',
+  'skills/terrashark/references/secret-exposure.md',
+  'skills/terrashark/references/blast-radius.md',
+  'skills/terrashark/references/ci-drift.md',
+  'skills/terrashark/references/compliance-gates.md',
 ]:
   assert Path(p).exists(), f'missing {p}'
 print('basic structure OK')

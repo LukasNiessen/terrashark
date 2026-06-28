@@ -32,15 +32,20 @@ When Claude Code encounters a Terraform or OpenTofu task, the Terraform skill ac
 
 ## Quick Install
 
-```bash
-# macOS / Linux
-git clone https://github.com/LukasNiessen/terrashark.git ~/.claude/skills/terrashark
+Using the skills CLI:
 
-# Windows (PowerShell)
-git clone https://github.com/LukasNiessen/terrashark.git "$env:USERPROFILE\.claude\skills\terrashark"
+```bash
+npx skills add https://github.com/lukasniessen/terrashark --skill terrashark
 ```
 
-That's it. Claude Code auto-discovers skills in `~/.claude/skills/` — no restart needed.
+Using Claude Code's plugin manager:
+
+```text
+/plugin marketplace add LukasNiessen/terrashark
+/plugin install terrashark
+```
+
+That's it. Claude Code installs TerraShark from the repository's plugin metadata. For Codex, clone the repository into your project and reference `.terrashark/skills/terrashark/SKILL.md` from `AGENTS.md`.
 
 ## Supported Runtimes
 

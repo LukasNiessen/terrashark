@@ -19,16 +19,17 @@ jobs:
 
       - name: Validate required files
         run: |
-          test -f SKILL.md
+          test -f skills/terrashark/SKILL.md
           test -f README.md
-          test -d references
+          test -d skills/terrashark/references
           test -f .claude-plugin/marketplace.json
+          test -f .claude-plugin/plugin.json
 
       - name: Validate SKILL frontmatter fields
         run: |
           python - <<'PY'
           from pathlib import Path
-          p = Path('SKILL.md')
+          p = Path('skills/terrashark/SKILL.md')
           text = p.read_text(encoding='utf-8')
           assert text.startswith('---\n'), 'SKILL.md must start with YAML frontmatter'
           end = text.find('\n---\n', 4)
@@ -39,6 +40,28 @@ jobs:
           print('frontmatter OK')
           PY
 
+      - name: Validate plugin metadata
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          plugin = json.loads(Path('.claude-plugin/plugin.json').read_text(encoding='utf-8'))
+          marketplace = json.loads(Path('.claude-plugin/marketplace.json').read_text(encoding='utf-8'))
+
+          assert plugin.get('name') == 'terrashark', 'plugin.json name must be terrashark'
+          assert plugin.get('version'), 'plugin.json missing version'
+          assert plugin.get('description'), 'plugin.json missing description'
+
+          entries = marketplace.get('plugins') or []
+          terrashark = next((entry for entry in entries if entry.get('name') == 'terrashark'), None)
+          assert terrashark is not None, 'marketplace missing terrashark plugin entry'
+          assert terrashark.get('source') == './', 'marketplace plugin source must point at repo root'
+          assert terrashark.get('version') == plugin['version'], 'marketplace and plugin versions differ'
+
+          print('plugin metadata OK')
+          PY
+
       - name: Validate local markdown links
         run: |
           python - <<'PY'
@@ -46,10 +69,13 @@ jobs:
           from pathlib import Path
 
           md_files = list(Path('.').rglob('*.md'))
+          ignored_dirs = {'.git', 'node_modules', '_book'}
           bad = []
           link_re = re.compile(r'\[[^\]]+\]\(([^)]+)\)')
 
           for f in md_files:
+            if any(part in ignored_dirs for part in f.parts):
+              continue
             txt = f.read_text(encoding='utf-8', errors='ignore')
             for m in link_re.finditer(txt):
               link = m.group(1).strip()
@@ -71,18 +97,21 @@ jobs:
 
       - name: Check failure-mode references are present
         run: |
-          test -f references/identity-churn.md
-          test -f references/secret-exposure.md
-          test -f references/blast-radius.md
-          test -f references/ci-drift.md
-          test -f references/compliance-gates.md
+          test -f skills/terrashark/references/identity-churn.md
+          test -f skills/terrashark/references/secret-exposure.md
+          test -f skills/terrashark/references/blast-radius.md
+          test -f skills/terrashark/references/ci-drift.md
+          test -f skills/terrashark/references/compliance-gates.md
 
       - name: Basic markdown style checks
         run: |
           python - <<'PY'
           from pathlib import Path
+          ignored_dirs = {'.git', 'node_modules', '_book'}
           issues = []
           for f in Path('.').rglob('*.md'):
+            if any(part in ignored_dirs for part in f.parts):
+              continue
             lines = f.read_text(encoding='utf-8', errors='ignore').splitlines()
             for i, line in enumerate(lines, start=1):
               if line.endswith('  '):
