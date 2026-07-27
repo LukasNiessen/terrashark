@@ -23,6 +23,12 @@ jobs:
           test -f README.md
           test -d references
           test -f .claude-plugin/marketplace.json
+          test -f .codex-plugin/plugin.json
+          test -f skills/terrashark/SKILL.md
+          test -d skills/terrashark/references
+
+      - name: Validate Codex skill package is synchronized
+        run: python3 scripts/sync_codex_skill.py --check
 
       - name: Validate SKILL frontmatter fields
         run: |
@@ -37,6 +43,25 @@ jobs:
           assert 'name:' in fm, 'frontmatter missing name'
           assert 'description:' in fm, 'frontmatter missing description'
           print('frontmatter OK')
+          PY
+
+      - name: Validate Codex plugin manifest
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          manifest = json.loads(
+              Path('.codex-plugin/plugin.json').read_text(encoding='utf-8')
+          )
+          assert manifest['name'] == 'terrashark'
+          assert manifest['skills'] == './skills/'
+          assert manifest['version']
+          assert manifest['description']
+          assert manifest['author']['name']
+          assert manifest['interface']['displayName']
+          assert manifest['interface']['defaultPrompt']
+          print('Codex plugin manifest OK')
           PY
 
       - name: Validate local markdown links

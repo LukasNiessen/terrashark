@@ -72,21 +72,17 @@ Or use the interactive plugin manager - run `/plugin`, switch to the **Discover*
 
 ### Option 3: Codex
 
-Codex has no global skill system - setup is per-project. Clone TerraShark into your repo and reference it from your `AGENTS.md`:
+TerraShark includes a native Codex plugin manifest and packaged skill. Add the
+repository as a marketplace, install the plugin, and restart Codex:
 
 ```bash
-# Clone into your project root
-git clone https://github.com/LukasNiessen/terrashark.git .terrashark
+codex plugin marketplace add LukasNiessen/terrashark
+codex plugin add terrashark@terrashark
 ```
 
-Then add to your `AGENTS.md` (or create one in the repo root):
-
-```markdown
-## Terraform
-
-When working with Terraform or OpenTofu, follow the workflow in `.terrashark/SKILL.md`.
-Load references from `.terrashark/references/` as needed.
-```
+Start a new task after installation. Codex can invoke `terrashark` explicitly,
+or activate it implicitly when a request matches its Terraform/OpenTofu
+description.
 
 ### Option 4: Antigravity
 
@@ -288,6 +284,9 @@ Here an overview of the repository layout.
 | `.github/workflows/validate.yml`        | CI validation for skill structure and links                   |
 | `.github/PULL_REQUEST_TEMPLATE.md`      | PR quality and failure-mode checklist                         |
 | `.claude-plugin/marketplace.json`       | Plugin metadata                                               |
+| `.codex-plugin/plugin.json`             | Native Codex plugin manifest                                  |
+| `skills/terrashark/`                    | Generated Codex skill package                                 |
+| `scripts/sync_codex_skill.py`           | Synchronizes and verifies the Codex package                    |
 
 ## 🔎 How It Works
 
