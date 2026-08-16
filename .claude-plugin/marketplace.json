@@ -9,7 +9,7 @@
       "name": "terrashark",
       "source": "./",
       "description": "Terraform/OpenTofu Guardrails",
-      "version": "2.3.0"
+      "version": "2.4.0-alpha.0+modern-plugin-layout"
     }
   ]
 }

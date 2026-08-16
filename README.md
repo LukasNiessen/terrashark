@@ -37,40 +37,48 @@ TerraShark is primarily based on [HashiCorp official recommended practices](http
 
 ## ⚡ 2 min Quickstart
 
-### Option 1: Clone
+### Option 1: Skills CLI
 
-**macOS / Linux:**
+If you manage skills with the `skills` CLI, install TerraShark directly from GitHub:
 
 ```bash
-git clone https://github.com/LukasNiessen/terrashark.git ~/.claude/skills/terrashark
+npx skills add https://github.com/lukasniessen/terrashark --skill terrashark
 ```
-
-**Windows (Powershell):**
-
-```powershell
-git clone https://github.com/LukasNiessen/terrashark.git "$env:USERPROFILE\.claude\skills\terrashark"
-```
-
-**Windows (Command Prompt):**
-
-```powershell
-git clone https://github.com/LukasNiessen/terrashark.git "%USERPROFILE%\.claude\skills\terrashark"
-```
-
-That's it. Claude Code auto-discovers skills in `~/.claude/skills/` - no restart needed.
 
 ### Option 2: Marketplace
 
 Claude Code has a built-in plugin system with marketplace support. Instead of cloning manually, you can add TerraShark's marketplace and install directly from the CLI:
 
-```
+```text
 /plugin marketplace add LukasNiessen/terrashark
 /plugin install terrashark
 ```
 
 Or use the interactive plugin manager - run `/plugin`, switch to the **Discover** tab, and install from there. The marketplace reads the `.claude-plugin/marketplace.json` in this repo to register TerraShark as an installable plugin.
 
-### Option 3: Codex
+### Option 3: Manual Claude Code Skill
+
+If you cannot use the marketplace, clone the repo and copy the packaged skill directory into Claude Code's skills directory.
+
+**macOS / Linux:**
+
+```bash
+git clone https://github.com/LukasNiessen/terrashark.git /tmp/terrashark
+mkdir -p ~/.claude/skills/terrashark
+cp -R /tmp/terrashark/skills/terrashark/. ~/.claude/skills/terrashark/
+```
+
+**Windows (PowerShell):**
+
+```powershell
+git clone https://github.com/LukasNiessen/terrashark.git "$env:TEMP\terrashark"
+New-Item -ItemType Directory -Force "$env:USERPROFILE\.claude\skills\terrashark"
+Copy-Item -Recurse -Force "$env:TEMP\terrashark\skills\terrashark\*" "$env:USERPROFILE\.claude\skills\terrashark\"
+```
+
+Claude Code auto-discovers skills in `~/.claude/skills/` - no restart needed.
+
+### Option 4: Codex
 
 Codex has no global skill system - setup is per-project. Clone TerraShark into your repo and reference it from your `AGENTS.md`:
 
@@ -84,40 +92,48 @@ Then add to your `AGENTS.md` (or create one in the repo root):
 ```markdown
 ## Terraform
 
-When working with Terraform or OpenTofu, follow the workflow in `.terrashark/SKILL.md`.
-Load references from `.terrashark/references/` as needed.
+When working with Terraform or OpenTofu, follow the workflow in `.terrashark/skills/terrashark/SKILL.md`.
+Load references from `.terrashark/skills/terrashark/references/` as needed.
 ```
 
-### Option 4: Antigravity
+### Option 5: Antigravity
 
 **macOS / Linux:**
 
 ```bash
-git clone https://github.com/LukasNiessen/terrashark.git ~/.gemini/antigravity/skills/terrashark
+git clone https://github.com/LukasNiessen/terrashark.git /tmp/terrashark
+mkdir -p ~/.gemini/antigravity/skills/terrashark
+cp -R /tmp/terrashark/skills/terrashark/. ~/.gemini/antigravity/skills/terrashark/
 ```
 
 **Windows (PowerShell):**
 
 ```powershell
-git clone https://github.com/LukasNiessen/terrashark.git "$env:USERPROFILE\.gemini\antigravity\skills\terrashark"
+git clone https://github.com/LukasNiessen/terrashark.git "$env:TEMP\terrashark"
+New-Item -ItemType Directory -Force "$env:USERPROFILE\.gemini\antigravity\skills\terrashark"
+Copy-Item -Recurse -Force "$env:TEMP\terrashark\skills\terrashark\*" "$env:USERPROFILE\.gemini\antigravity\skills\terrashark\"
 ```
 
 Antigravity auto-discovers skills in the skills directory — no restart needed.
 
-### Option 5: Gemini CLI
+### Option 6: Gemini CLI
 
 Gemini CLI discovers skills in several standard locations.
 
 **Global Installation (All Workspaces):**
 
 ```bash
-git clone https://github.com/LukasNiessen/terrashark.git ~/.gemini/skills/terrashark
+git clone https://github.com/LukasNiessen/terrashark.git /tmp/terrashark
+mkdir -p ~/.gemini/skills/terrashark
+cp -R /tmp/terrashark/skills/terrashark/. ~/.gemini/skills/terrashark/
 ```
 
 **Local Installation (Current Workspace):**
 
 ```bash
-git clone https://github.com/LukasNiessen/terrashark.git .gemini/skills/terrashark
+git clone https://github.com/LukasNiessen/terrashark.git .terrashark
+mkdir -p .gemini/skills/terrashark
+cp -R .terrashark/skills/terrashark/. .gemini/skills/terrashark/
 ```
 
 Gemini CLI auto-discovers skills in these directories. Run `/skills list` in the CLI to verify.
@@ -128,12 +144,12 @@ Done. Now ask Claude Code / Codex / Antigravity / Gemini CLI any Terraform quest
 
 **Invoke explicitly:**
 
-```bash
-/terrashark Create a multi-region S3 module with replication
+```text
+/terrashark:terrashark Create a multi-region S3 module with replication
 ```
 
-```bash
-/terrashark Refactor our EKS stack into separate state files per environment, add moved blocks to avoid recreation, set up a GitHub Actions pipeline with plan on PR and gated apply on merge, and wire in Checkov for compliance scanning
+```text
+/terrashark:terrashark Refactor our EKS stack into separate state files per environment, add moved blocks to avoid recreation, set up a GitHub Actions pipeline with plan on PR and gated apply on merge, and wire in Checkov for compliance scanning
 ```
 
 **Or just ask naturally** - TerraShark activates automatically for any Terraform/OpenTofu task:
@@ -214,7 +230,7 @@ This matters for three reasons:
 - Exclude broad tutorial material with low safety impact
 - Add depth only when measured quality would otherwise drop
 
-See `references/token-balance-rationale.md` for the full decision and tradeoffs.
+See `skills/terrashark/references/token-balance-rationale.md` for the full decision and tradeoffs.
 
 ## 🧱 Trusted Module Awareness
 
@@ -228,7 +244,7 @@ Hand-rolled `resource` blocks are one of the largest hallucination surfaces for 
 
 ### When it loads (lean-token approach)
 
-`references/conditional/trusted-modules.md` is pulled into context **only when the detected provider is one of the supported clouds**. AWS-only projects never pay the token cost for Azure or GCP guidance, and vice versa, matching TerraShark's core token-efficiency design.
+`skills/terrashark/references/conditional/trusted-modules.md` is pulled into context **only when the detected provider is one of the supported clouds**. AWS-only projects never pay the token cost for Azure or GCP guidance, and vice versa, matching TerraShark's core token-efficiency design.
 
 ### Supported providers
 
@@ -260,34 +276,35 @@ Other ecosystems (Alibaba Cloud, DigitalOcean, Hetzner, etc.) are intentionally 
 
 Here an overview of the repository layout.
 
-| File                                    | Description                                                   |
-| --------------------------------------- | ------------------------------------------------------------- |
-| `SKILL.md`                              | Operational workflow for TerraShark                           |
-| `PHILOSOPHY.md`                         | Design strategy, architecture decisions, token experiment     |
-| `references/identity-churn.md`          | Address stability, `count`/`for_each`, `moved` safety         |
-| `references/secret-exposure.md`         | Preventing secret leakage through state/logs/artifacts        |
-| `references/blast-radius.md`            | State boundaries, environment isolation, apply impact control |
-| `references/ci-drift.md`                | Production CI drift prevention and plan/apply integrity       |
-| `references/compliance-gates.md`        | Policy gates, approvals, evidence, framework mappings         |
-| `references/structure-and-state.md`     | State, boundaries, and apply safety                           |
-| `references/conditional/backend-state-safety.md` | Backend-specific state safety and migration guardrails |
-| `references/module-architecture.md`     | Module role model and composition rules                       |
-| `references/coding-standards.md`        | Naming, typing, iteration, versioning                         |
-| `references/migration-playbooks.md`     | moved/import/refactor/upgrade playbooks                       |
-| `references/testing-matrix.md`          | Test tiering, native test caveats, Terratest guidance         |
-| `references/ci-delivery-patterns.md`    | CI stages and production-oriented pipeline templates          |
-| `references/security-and-governance.md` | Security controls and operational governance                  |
-| `references/quick-ops.md`               | Command sequence and troubleshooting shortcuts                |
-| `references/examples-good.md`           | Strong implementation examples                                |
-| `references/examples-bad.md`            | Anti-pattern examples                                         |
-| `references/examples-neutral.md`        | Context-based tradeoff examples                               |
-| `references/do-dont-patterns.md`        | Do/Don't pattern checklist                                    |
-| `references/mcp-integration.md`         | MCP integration guidance                                      |
-| `references/conditional/trusted-modules.md` | Canonical community/vendor modules per cloud (conditional) |
-| `references/token-balance-rationale.md` | Why the skill stays lean and where depth is kept              |
-| `.github/workflows/validate.yml`        | CI validation for skill structure and links                   |
-| `.github/PULL_REQUEST_TEMPLATE.md`      | PR quality and failure-mode checklist                         |
-| `.claude-plugin/marketplace.json`       | Plugin metadata                                               |
+| File                                                       | Description                                                   |
+| ---------------------------------------------------------- | ------------------------------------------------------------- |
+| `skills/terrashark/SKILL.md`                               | Operational workflow for TerraShark                           |
+| `PHILOSOPHY.md`                                            | Design strategy, architecture decisions, token experiment     |
+| `skills/terrashark/references/identity-churn.md`           | Address stability, `count`/`for_each`, `moved` safety         |
+| `skills/terrashark/references/secret-exposure.md`          | Preventing secret leakage through state/logs/artifacts        |
+| `skills/terrashark/references/blast-radius.md`             | State boundaries, environment isolation, apply impact control |
+| `skills/terrashark/references/ci-drift.md`                 | Production CI drift prevention and plan/apply integrity       |
+| `skills/terrashark/references/compliance-gates.md`         | Policy gates, approvals, evidence, framework mappings         |
+| `skills/terrashark/references/structure-and-state.md`      | State, boundaries, and apply safety                           |
+| `skills/terrashark/references/conditional/backend-state-safety.md` | Backend-specific state safety and migration guardrails |
+| `skills/terrashark/references/module-architecture.md`      | Module role model and composition rules                       |
+| `skills/terrashark/references/coding-standards.md`         | Naming, typing, iteration, versioning                         |
+| `skills/terrashark/references/migration-playbooks.md`      | moved/import/refactor/upgrade playbooks                       |
+| `skills/terrashark/references/testing-matrix.md`           | Test tiering, native test caveats, Terratest guidance         |
+| `skills/terrashark/references/ci-delivery-patterns.md`     | CI stages and production-oriented pipeline templates          |
+| `skills/terrashark/references/security-and-governance.md`  | Security controls and operational governance                  |
+| `skills/terrashark/references/quick-ops.md`                | Command sequence and troubleshooting shortcuts                |
+| `skills/terrashark/references/examples-good.md`            | Strong implementation examples                                |
+| `skills/terrashark/references/examples-bad.md`             | Anti-pattern examples                                         |
+| `skills/terrashark/references/examples-neutral.md`         | Context-based tradeoff examples                               |
+| `skills/terrashark/references/do-dont-patterns.md`         | Do/Don't pattern checklist                                    |
+| `skills/terrashark/references/mcp-integration.md`          | MCP integration guidance                                      |
+| `skills/terrashark/references/conditional/trusted-modules.md` | Canonical community/vendor modules per cloud (conditional) |
+| `skills/terrashark/references/token-balance-rationale.md`  | Why the skill stays lean and where depth is kept              |
+| `.github/workflows/validate.yml`                           | CI validation for skill structure and links                   |
+| `.github/PULL_REQUEST_TEMPLATE.md`                         | PR quality and failure-mode checklist                         |
+| `.claude-plugin/marketplace.json`                          | Marketplace metadata                                          |
+| `.claude-plugin/plugin.json`                               | Claude Code plugin manifest                                   |
 
 ## 🔎 How It Works
 
@@ -385,4 +402,4 @@ This project is under the **MIT** license.
 
 ## Conditional Reference Retrieval (CRR)
 
-TerraShark adheres to Conditional Reference Retrieval (CRR): conditional references live under `references/conditional/`, are loaded only when concrete signals are detected, and neighboring conditional references are not loaded unless the task spans multiple detected routes.
+TerraShark adheres to Conditional Reference Retrieval (CRR): conditional references live under `skills/terrashark/references/conditional/`, are loaded only when concrete signals are detected, and neighboring conditional references are not loaded unless the task spans multiple detected routes.

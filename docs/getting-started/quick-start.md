@@ -4,22 +4,23 @@ Get productive with the Terraform skill in under 2 minutes.
 
 ## Step 1: Install
 
-```bash
-git clone https://github.com/LukasNiessen/terrashark.git ~/.claude/skills/terrashark
+```text
+/plugin marketplace add LukasNiessen/terrashark
+/plugin install terrashark
 ```
 
 ## Step 2: Use It
 
 ### Explicit Invocation
 
-Use the `/terrashark` command to explicitly invoke the Terraform skill:
+Use the `/terrashark:terrashark` command to explicitly invoke the Terraform skill after marketplace install:
 
-```bash
-/terrashark Create a multi-region S3 module with replication
+```text
+/terrashark:terrashark Create a multi-region S3 module with replication
 ```
 
-```bash
-/terrashark Refactor our EKS stack into separate state files per environment, add moved blocks to avoid recreation, set up a GitHub Actions pipeline with plan on PR and gated apply on merge, and wire in Checkov for compliance scanning
+```text
+/terrashark:terrashark Refactor our EKS stack into separate state files per environment, add moved blocks to avoid recreation, set up a GitHub Actions pipeline with plan on PR and gated apply on merge, and wire in Checkov for compliance scanning
 ```
 
 ### Automatic Activation
