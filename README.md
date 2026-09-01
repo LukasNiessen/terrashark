@@ -360,7 +360,7 @@ If TerraShark helps your project, please consider:
 
 ### Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=LukasNiessen/terrashark&type=Date)](https://www.star-history.com/#LukasNiessen/terrashark&Date)
+[![Star History Chart](https://star-history.dera.page/svg?repos=LukasNiessen/terrashark&type=Date)](https://star-history.dera.page/#LukasNiessen/terrashark&Date)
 
 ## 📄 License
 
