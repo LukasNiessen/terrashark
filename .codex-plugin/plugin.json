@@ -1,0 +1,39 @@
+{
+  "name": "terrashark",
+  "version": "2.3.0",
+  "description": "Terraform and OpenTofu failure-mode guardrails for safer infrastructure generation, review, refactoring, and migration.",
+  "author": {
+    "name": "Lukas Niessen",
+    "url": "https://github.com/LukasNiessen"
+  },
+  "homepage": "https://lukasniessen.github.io/terrashark/",
+  "repository": "https://github.com/LukasNiessen/terrashark",
+  "license": "MIT",
+  "keywords": [
+    "terraform",
+    "opentofu",
+    "infrastructure-as-code",
+    "security",
+    "devops"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "TerraShark",
+    "shortDescription": "Terraform and OpenTofu guardrails",
+    "longDescription": "Diagnose and prevent identity churn, secret exposure, excessive blast radius, CI drift, and compliance gaps in Terraform and OpenTofu workflows.",
+    "developerName": "Lukas Niessen",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Instructions"
+    ],
+    "websiteURL": "https://lukasniessen.github.io/terrashark/",
+    "defaultPrompt": [
+      "Review this Terraform for operational risks.",
+      "Refactor this module without recreating resources.",
+      "Design a safe Terraform delivery workflow."
+    ],
+    "brandColor": "#0F766E",
+    "composerIcon": "./assets/logo.png",
+    "logo": "./assets/logo.png"
+  }
+}
