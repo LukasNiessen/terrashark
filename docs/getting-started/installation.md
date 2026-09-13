@@ -1,6 +1,8 @@
 # Installing the Terraform Skill
 
-TerraShark can be installed in five ways depending on your environment: direct clone for Claude Code, Antigravity, or Gemini CLI, marketplace, or per-project for Codex.
+TerraShark can be installed in five ways depending on your environment: direct
+clone for Claude Code, Antigravity, or Gemini CLI, the Claude marketplace, or
+the native Codex plugin marketplace.
 
 ## Option 1: Clone to Skills Directory (Recommended)
 
@@ -42,23 +44,19 @@ Or use the interactive plugin manager:
 
 The marketplace reads the `.claude-plugin/marketplace.json` in the repository to register TerraShark as an installable plugin.
 
-## Option 3: Codex (Per-Project Setup)
+## Option 3: Codex Plugin
 
-Codex has no global skill system — setup is per-project. Clone TerraShark into your repository and reference it from your `AGENTS.md`:
+TerraShark includes `.codex-plugin/plugin.json` and a packaged skill under
+`skills/terrashark/`. Add the repository as a marketplace and install it:
 
 ```bash
-# Clone into your project root
-git clone https://github.com/LukasNiessen/terrashark.git .terrashark
+codex plugin marketplace add LukasNiessen/terrashark
+codex plugin add terrashark@terrashark
 ```
 
-Then add to your `AGENTS.md` (or create one in the repo root):
-
-```markdown
-## Terraform
-
-When working with Terraform or OpenTofu, follow the workflow in `.terrashark/SKILL.md`.
-Load references from `.terrashark/references/` as needed.
-```
+Restart Codex and start a new task so the installed skill is included in skill
+discovery. Codex can invoke the skill explicitly or activate it implicitly for
+matching Terraform/OpenTofu requests.
 
 ## Option 4: Antigravity (Global Setup)
 
@@ -121,6 +119,15 @@ git pull origin main
 cd ~/.gemini/skills/terrashark
 git pull origin main
 ```
+
+**Codex plugin:**
+```bash
+codex plugin marketplace upgrade terrashark
+codex plugin remove terrashark@terrashark
+codex plugin add terrashark@terrashark
+```
+
+Restart Codex and test in a new task after upgrading.
 
 ## Verifying the Installation
 

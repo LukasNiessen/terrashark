@@ -21,6 +21,12 @@ Every change should answer:
 ## Local checks
 
 ```bash
+# Regenerate the Codex package after changing SKILL.md or references/
+python3 scripts/sync_codex_skill.py
+
+# Verify the generated package is current
+python3 scripts/sync_codex_skill.py --check
+
 # quick sanity checks
 rg -n "FIXME|placeholder-text" README.md SKILL.md references/*.md
 python - <<'PY'
@@ -45,6 +51,9 @@ PY
 - Prefer failure-mode framing over generic "best-practice dump" text.
 - Avoid provider-specific deep dives unless they directly reduce a known LLM failure mode.
 - Keep claims precise; avoid vague "always" language when tradeoffs exist.
+- Treat root `SKILL.md` and `references/` as canonical. Regenerate
+  `skills/terrashark/` with `scripts/sync_codex_skill.py`; do not edit the
+  generated copy directly.
 
 ## Required for PR approval
 
@@ -64,4 +73,3 @@ Open an issue with:
 - observed hallucination/failure pattern
 - minimal reproducible prompt/context
 - expected behavior
-
