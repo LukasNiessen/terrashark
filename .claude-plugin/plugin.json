@@ -1,0 +1,11 @@
+{
+  "name": "terrashark",
+  "version": "2.3.0",
+  "description": "Practical Terraform and OpenTofu skill focused on structure, security, testing, and low-hallucination IaC generation.",
+  "author": {
+    "name": "LukasNiessen"
+  },
+  "homepage": "https://github.com/LukasNiessen/terrashark",
+  "repository": "https://github.com/LukasNiessen/terrashark",
+  "skills": "."
+}
